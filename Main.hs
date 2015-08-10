@@ -1,12 +1,12 @@
 module Main where
 
-import Control.Exception
-import Control.Monad
-import System.Directory
-import System.Environment
-import System.FilePath
-import System.FilePath.Glob
-import System.Posix.Files
+import Control.Monad (when)
+import System.Directory (createDirectory, doesDirectoryExist,
+                         getCurrentDirectory, getDirectoryContents, removeFile)
+import System.Environment (getArgs)
+import System.FilePath (combine,takeFileName)
+import System.FilePath.Glob (glob)
+import System.Posix.Files (createSymbolicLink)
 
 zfill :: Int -> String
 zfill n = let ns = show n in replicate (3-length ns) '0' ++ ns
